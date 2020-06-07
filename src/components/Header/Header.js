@@ -1,45 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
+import {  Link } from "react-router-dom";
 
 
 const Header = () => {
+  const [showMenu, setShowMenu] = useState(false)
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  }
+
   return (
     <header>
-    <div class="menu-btn">
-      <div class="btn-line"></div>
-      <div class="btn-line"></div>
-      <div class="btn-line"></div>
+    <div className={`menu-btn ${showMenu ? 'close' : ''}`} onClick={toggleMenu}>
+      <div className="btn-line"></div>
+      <div className="btn-line"></div>
+      <div className="btn-line"></div>
     </div>
 
-    <nav class="menu">
-      <div class="menu-branding">
-        <div class="portrait"></div>
+    <nav className={`menu ${showMenu ? 'show' : ''}`}>
+      <div className={`menu-branding ${showMenu ? 'show' : ''}`}>
+        <div className="portrait"></div>
       </div>
-      <ul class="menu-nav">
-        <li class="nav-item current">
-          <a href="index.html" class="nav-link">
+      <ul className={`menu-nav ${showMenu ? 'show' : ''}`}>
+        <li className={`nav-item ${showMenu ? 'show' : ''}`} onClick={toggleMenu}>
+          <Link to="home" className="nav-link">
             Home
-          </a>
+          </Link>
         </li>
-        <li class="nav-item">
-          <a href="about.html" class="nav-link">
+        <li className={`nav-item ${showMenu ? 'show' : ''}`} onClick={toggleMenu}>
+          <Link to="about" className="nav-link">
             About Me
-          </a>
+          </Link>
         </li>
-        <li class="nav-item">
-          <a href="work.html" class="nav-link">
+        <li className={`nav-item ${showMenu ? 'show' : ''}`} onClick={toggleMenu}>
+          <Link to="work" className="nav-link">
             My Work
-          </a>
+          </Link>
         </li>
-        <li class="nav-item">
-          <a href="blog.html" class="nav-link">
+        <li className={`nav-item ${showMenu ? 'show' : ''}`} onClick={toggleMenu}>
+          <Link to="blog" className="nav-link">
             Blog
-          </a>
+          </Link>
         </li>
-        <li class="nav-item">
-          <a href="contact.html" class="nav-link">
+        <li className={`nav-item ${showMenu ? 'show' : ''}`} onClick={toggleMenu}>
+          <Link to="contact" className="nav-link">
             Contact Me
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
